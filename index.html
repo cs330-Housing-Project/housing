@@ -56,7 +56,18 @@
   <script>
 
     var map;
-
+    var count = 1;
+        function setColor(btn, color) {
+            var property = document.getElementById(btn);
+            if (count == 0) {
+                property.style.backgroundColor = "#FFFFFF"
+                count = 1;
+            }
+            else {
+                property.style.backgroundColor = "#7FFF00"
+                count = 0;
+            }
+        }
 
     $(document).ready(function () {
 
@@ -98,27 +109,27 @@
         <table style="width:100%">
           <tr>
             <td id = "listing">Evanston Place</td>
-            <td id = "end">&#9734;</td>
+            <td id = "end"><button>&#9734;</button></td>
           </tr>
           <tr>
             <td id = "listing">Sherman and Noyes</td>
-            <td id = "end">&#9734;</td>
+            <td id = "end"><button>&#9734;</button></td>
           </tr>
           <tr>
             <td id = "listing">The Link</td>
-            <td id = "end">&#9734;</td>
+            <td id = "end"><button>&#9734;</button></td>
           </tr>
           <tr>
             <td id = "listing">Park Evanston</td>
-            <td id = "end">&#9734;</td>
+            <td id = "end"><button>&#9734;</button></td>
           </tr>
           <tr>
             <td id = "listing">Lincoln</td>
-            <td id = "end">&#9734;</td>
+            <td id = "end"><button>&#9734;</button></td>
           </tr>
           <tr>
             <td id = "listing">Hamlin</td>
-            <td id = "end">&#9734;</td>
+            <td id = "end"><button>&#9734;</button></td>
           </tr>
         </table>
       </div>
