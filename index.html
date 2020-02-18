@@ -28,9 +28,8 @@
       margin: 0;
     }
 
-    .container {
+    .container-fluid {
       height: 100%;
-      background-color: aqua;
     }
 
     #header {
@@ -81,15 +80,41 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row" id="header">
 
     </div>
     <div class="row" id="content">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <h2>Listings:</h2>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-3">
+        <h3>Add a Listing:</h3>
+        <form>
+          <div class="form-group">
+            <label for="email_address">Email address</label>
+            <input type="email" class="form-control" id="email_address" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label for="address">Location</label>
+            <input type="address" class="form-control" id="address" placeholder="1922 Sheridan Rd. Evanston, Il">
+          </div>
+          <div class="form-group">
+            <label for="housing_type">Type of Housing</label>
+            <select class="form-control" id="housing_type">
+              <option>House</option>
+              <option>Apartment</option>
+              <option>Sublet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea class="form-control" id="notes" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col-md-6">
         <div id="mapcanvas">
         </div>
       </div>
