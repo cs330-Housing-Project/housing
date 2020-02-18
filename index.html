@@ -38,13 +38,20 @@
 
   $(document).ready(function(){
 
-
-    var mapOptions = {
+    const myLatLng = {lat: 42.0579302, lng: -87.682719};
+    const mapOptions = {
       zoom: 16,
-      center: new google.maps.LatLng(42.0579302, -87.682719),
+      center: myLatLng,
     };
-
     map=new google.maps.Map($('#mapcanvas')[0], mapOptions);
+
+    for (let i = 0; i < 10; i++) {
+      const marker = new google.maps.Marker({
+        position: {lat: 42.0579302 + (i * .001), lng: -87.682719 + (i * .001)},
+        map: map,
+      });
+    }
+
 
     //*********************************************************************
     // Add the layer showing the inventory
