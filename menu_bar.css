@@ -5,10 +5,20 @@
 div.container-fluid div#header.row {
   display: flex;
   flex-direction: row;
-  padding: 30px;
+  margin: 30px;
   justify-content: flex-start;
+  border-bottom: 2px solid black;
 }
 
 div.container-fluid div#header.row h1 {
   padding: 15px;
+  color: rgb(129, 129, 129);
+}
+
+div.container-fluid div#header.row .selected {
+  color: black;
+}
+
+div.container-fluid div#header.row h1:hover {
+  color: black;
 }
