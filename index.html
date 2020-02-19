@@ -1,174 +1,193 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>HTML5</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=650, user-scalable=yes" />
 
-<head>
-  <title>HTML5</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=650, user-scalable=yes">
-
-
-  <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="menu_bar.css" />
 
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_RBCTTrtnTTBYvDQ6r_oNIkz258GPcoM&sensor=false"
+    ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_RBCTTrtnTTBYvDQ6r_oNIkz258GPcoM&sensor=false">
-  </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-
-
-  <style>
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-    }
-
-    .container-fluid {
-      height: 100%;
-    }
-
-    #header {
-      height: 20%
-    }
-
-    #content {
-      height: 80%
-    }
-
-    #mapcanvas {
-      height: 100%;
-    }
-
-    #listing{
-      padding: 10px;
-    }
-
-    table, tr {
-      border: .5px solid black;
-    }
-  </style>
-
-  <script>
-
-    var map;
-    var count = 1;
-        function setColor(btn, color) {
-            var property = document.getElementById(btn);
-            if (count == 0) {
-                property.style.backgroundColor = "#FFFFFF"
-                count = 1;
-            }
-            else {
-                property.style.backgroundColor = "#7FFF00"
-                count = 0;
-            }
-        }
-
-    $(document).ready(function () {
-
-
-      const myLatLng = { lat: 42.0579902, lng: -87.682719 };
-      const mapOptions = {
-        zoom: 15,
-        center: myLatLng,
-      };
-      map = new google.maps.Map($('#mapcanvas')[0], mapOptions);
-
-      for (let i = 0; i < 10; i++) {
-        const marker = new google.maps.Marker({
-          position: { lat: Math.random()*(42.05900 -42.05600) + 42.05600, lng: Math.random()*(-87.681719 + 87.685719) - 87.683719 },
-          map: map,
-        });
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
       }
 
+      .container-fluid {
+        height: 100%;
+      }
 
-      //*********************************************************************
-      // Add the layer showing the inventory
-      //*********************************************************************
+      #header {
+        height: 20%;
+      }
 
-    });//end document ready
+      #content {
+        height: 80%;
+      }
 
+      #mapcanvas {
+        height: 100%;
+      }
 
-  </script>
+      #listing {
+        padding: 10px;
+      }
 
-</head>
+      table,
+      tr {
+        border: 0.5px solid black;
+      }
+    </style>
 
-<body>
-  <div class="container-fluid">
-    <div class="row" id="header">
+    <script>
+      var map;
+      var count = 1;
+      function setColor(btn, color) {
+        var property = document.getElementById(btn);
+        if (count == 0) {
+          property.style.backgroundColor = "#FFFFFF";
+          count = 1;
+        } else {
+          property.style.backgroundColor = "#7FFF00";
+          count = 0;
+        }
+      }
 
-    </div>
-    <div class="row" id="content">
-      <div class="col-md-3">
-        <h2>Listings:</h2>
-        <table style="width:100%">
-          <tr>
-            <td id = "listing">Evanston Place</td>
-            <td id = "end"><button>&#9734;</button></td>
-          </tr>
-          <tr>
-            <td id = "listing">Sherman and Noyes</td>
-            <td id = "end"><button>&#9734;</button></td>
-          </tr>
-          <tr>
-            <td id = "listing">The Link</td>
-            <td id = "end"><button>&#9734;</button></td>
-          </tr>
-          <tr>
-            <td id = "listing">Park Evanston</td>
-            <td id = "end"><button>&#9734;</button></td>
-          </tr>
-          <tr>
-            <td id = "listing">Lincoln</td>
-            <td id = "end"><button>&#9734;</button></td>
-          </tr>
-          <tr>
-            <td id = "listing">Hamlin</td>
-            <td id = "end"><button>&#9734;</button></td>
-          </tr>
-        </table>
+      $(document).ready(function() {
+        const myLatLng = { lat: 42.0579902, lng: -87.682719 };
+        const mapOptions = {
+          zoom: 15,
+          center: myLatLng
+        };
+        map = new google.maps.Map($("#mapcanvas")[0], mapOptions);
+
+        for (let i = 0; i < 10; i++) {
+          const marker = new google.maps.Marker({
+            position: {
+              lat: Math.random() * (42.059 - 42.056) + 42.056,
+              lng: Math.random() * (-87.681719 + 87.685719) - 87.683719
+            },
+            map: map
+          });
+        }
+
+        //*********************************************************************
+        // Add the layer showing the inventory
+        //*********************************************************************
+      }); //end document ready
+    </script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row" id="header">
+        <h1 href="menu_bar.css">Listings</h1>
+        <h1 href="menu_bar.css">Chat</h1>
+        <h1 href="menu_bar.css">Group</h1>
+        <h1 href="menu_bar.css">Favorites</h1>
+        <h1 href="menu_bar.css">Account</h1>
       </div>
-      <div class="col-md-3">
-        <h3>Add a Listing:</h3>
-        <form>
-          <div class="form-group">
-            <label for="email_address">Email address</label>
-            <input type="email" class="form-control" id="email_address" placeholder="name@example.com">
-          </div>
-          <div class="form-group">
-            <label for="address">Location</label>
-            <input type="address" class="form-control" id="address" placeholder="1922 Sheridan Rd. Evanston, Il">
-          </div>
-          <div class="form-group">
-            <label for="housing_type">Type of Housing</label>
-            <select class="form-control" id="housing_type">
-              <option>House</option>
-              <option>Apartment</option>
-              <option>Sublet</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="notes">Notes</label>
-            <textarea class="form-control" id="notes" rows="3"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <div id="mapcanvas">
+      <div class="row" id="content">
+        <div class="col-md-3">
+          <h2>Listings:</h2>
+          <table style="width:100%">
+            <tr>
+              <td id="listing">Evanston Place</td>
+              <td id="end"><button>&#9734;</button></td>
+            </tr>
+            <tr>
+              <td id="listing">Sherman and Noyes</td>
+              <td id="end"><button>&#9734;</button></td>
+            </tr>
+            <tr>
+              <td id="listing">The Link</td>
+              <td id="end"><button>&#9734;</button></td>
+            </tr>
+            <tr>
+              <td id="listing">Park Evanston</td>
+              <td id="end"><button>&#9734;</button></td>
+            </tr>
+            <tr>
+              <td id="listing">Lincoln</td>
+              <td id="end"><button>&#9734;</button></td>
+            </tr>
+            <tr>
+              <td id="listing">Hamlin</td>
+              <td id="end"><button>&#9734;</button></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-3">
+          <h3>Add a Listing:</h3>
+          <form>
+            <div class="form-group">
+              <label for="email_address">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email_address"
+                placeholder="name@example.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="address">Location</label>
+              <input
+                type="address"
+                class="form-control"
+                id="address"
+                placeholder="1922 Sheridan Rd. Evanston, Il"
+              />
+            </div>
+            <div class="form-group">
+              <label for="housing_type">Type of Housing</label>
+              <select class="form-control" id="housing_type">
+                <option>House</option>
+                <option>Apartment</option>
+                <option>Sublet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="notes">Notes</label>
+              <textarea class="form-control" id="notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div id="mapcanvas"></div>
         </div>
       </div>
-
     </div>
-
-  </div>
-
-</body>
-
-
+  </body>
 </html>
