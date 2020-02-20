@@ -5,14 +5,15 @@ html, body {
 
 .container-fluid {
     height: 100%;
+    padding: 0px;
 }
 
 #header {
-    height: 20%;
+    height: 10%;
 }
 
 #content {
-    height: 80%;
+    height: 90%;
 }
 
 table, tr {
@@ -29,4 +30,17 @@ table, tr {
 
 table, tr {
     border: 0.5px solid black;
+}
+
+nav {
+    height: 100%
+}
+
+.row {
+    margin-left: 0px;
+}
+
+.listing-card {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
