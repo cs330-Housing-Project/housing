@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+#header {
+    height: 20%;
+}
+
+#content {
+    height: 80%;
+}
+
+table, tr {
+    border: .5px solid black;
+}
+
+#mapcanvas {
+    height: 100%;
+}
+
+#listing {
+    padding: 10px;
+}
+
+table, tr {
+    border: 0.5px solid black;
+}
