@@ -9,6 +9,9 @@ class Listing {
         this.notes = notes;
     }
     // TODO: add phone to card
+    /**
+     * Generates the card using the properties set on this.
+     */
     generate_card() {
         return `<div class="card listing-card">
                 <div class="card-header">${this.housing_type}
@@ -22,17 +25,22 @@ class Listing {
             </div>`
     }
     
+    /**
+     * Converts self to json string
+     */
     convert_to_json() {        
         return JSON.stringify(this);
     }
 
-    add_listing_to_local_storage() {
-
+    /**
+     * Adds a listing to the local storage
+     */
+    add_listing_to_local_storage(referrerElement=null) {
         const listings_content = document.getElementById('listings-content');
         if (listings_content) {
             listings_content.innerHTML += this.generate_card()
         }
-    
+        
         if (geocoder && map) {
             markAddress(geocoder, map, address);
         }
@@ -43,9 +51,9 @@ class Listing {
             listings.add(json);
             localStorage.setItem('listings', JSON.stringify(Array.from(listings)))
         } else {
-            console.log("Listing already exists!")
+            if (referrerElement) {
+                // do stuff to display to user that they can't add the same listing twice
+            }
         }
-            
-    
     }
 }
