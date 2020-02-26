@@ -1,5 +1,5 @@
 class Listing {
-    constructor(title, email, address, zip, phone, housing_type, notes = "", price= 0) {
+    constructor(title="", email="", address="", zip="", phone="", housing_type="", notes = "", price= 0) {
         this.title = title;
         this.email = email;
         this.address = address;
@@ -75,41 +75,23 @@ class Listing {
     }
 }
 
+Listing.prototype.generate_from_obj = (obj) => {
+    let newListing = new Listing();
+    return Object.assign(newListing, obj);
+}
+
 Listing.prototype.sort_listings_by_id= (param) => {
     let listings = JSON.parse(localStorage.getItem('listings'));
-    listings = listings.map(JSON.parse)
+    listings = listings.map((l) => {
+        return Listing.prototype.generate_from_obj(JSON.parse(l));
+    })
     listings = listings.sort((a, b) => (a[`${param}`] > b[`${param}`]) ? 1 : -1);
 
     const listings_content = document.getElementById('listings-content');
     listings_content.innerHTML = "";
     if (listings_content) {
         listings.forEach((listing)=> {
-            console.log(listing);
-            listingCard =
-            `<div class="card listing-card">
-            <div class="card-header">${listing.housing_type}: ${listing.title}<div class="float-right price" style = "font-weight = 2, color= green">$${listing.price}</div>
-            </div>
-
-              <table class="card-table table table-borderless" style="border: 0">
-                <thead >
-                  <tr>
-                    <th scope="col">Description</th>
-                    <th scope="col">Info</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>${listing.notes}</td>
-                    <td>
-                      <p class = "card-text ">${listing.address}, ${listing.zip}</h6>
-                      <br />
-                      <a href="">${listing.phone}</a><br />
-                      <a href="mailto:${listing.email}">${listing.email}</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>`
+            listingCard = listing.generate_card();
             listings_content.innerHTML += listingCard;
         });
     }

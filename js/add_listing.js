@@ -1,0 +1,1 @@
+document.getElementById("add-listing-content").innerHTML='<object type="text/html" data="../templates/form.html" ></object>';
