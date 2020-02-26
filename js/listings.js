@@ -15,7 +15,7 @@ class Listing {
      */
     generate_card() {
         return `<div class="card listing-card">
-                <div class="card-header">${this.housing_type}: ${this.title}<div class="float-right price" style = "font-weight = 2, color= green">$${this.price}</div>
+                <div class="card-header">${this.housing_type}: ${this.title}<div class="float-right price">$${this.price}</div>
                 </div>
 
                   <table class="card-table table table-borderless" style="border: 0">

@@ -43,7 +43,14 @@ nav {
 .listing-card {
     margin-top: 5px;
     margin-bottom: 5px;
+
 }
+
+.listing-card:hover {
+  background-color: #F0F0F0;
+  cursor: pointer
+}
+
 
 .table-borderless td,
 .table-borderless tbody > tr {
