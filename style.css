@@ -44,3 +44,24 @@ nav {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.table-borderless td,
+.table-borderless tbody > tr {
+    border: 0;
+}
+.table-borderless thead > tr {
+    border-bottom: 1;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+
+}
+
+.price {
+  font-weight: bolder;
+  color: green
+}
+/* .table-borderless  thead > tr > th, .table-borderless  tbody > tr > th, .table-borderless  thead > tr > td, { border: 1px solid #2980B9; }
+/* .table-borderless thead > tr > th {
+    border-bottom: 1;
+} */
