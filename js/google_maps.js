@@ -31,6 +31,13 @@ function initializeMap() {
         address = "2420 Campus Dr. Evanston, Il",
         zip = "60201", phone = "123-456-7890",
         housing_type = "Apartment", notes = "Nice")).add_listing_to_local_storage();
+
+    (new Listing(
+        title = "Itay's House",
+        email = "stuff@northwestern.edu",
+        address = "2110 Maple Ave. Evanston, Il",
+        zip = "60201", phone = "123-456-7890",
+        housing_type = "House", notes = "Sig Chi darty house")).add_listing_to_local_storage();
 }
 
 function markAddress(geocoder, map, address) {
