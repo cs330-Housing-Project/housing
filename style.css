@@ -65,6 +65,12 @@ nav {
   width: 60%
 }
 
+.listHeader {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  text-align: center;
+}
 .price {
   font-weight: bolder;
   color: green
