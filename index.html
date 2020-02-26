@@ -56,6 +56,26 @@
     <div class="row" id="content">
       <div class="col-md-6" id="listings">
         <h5 class = "listHeader">Listings In Your Area</h5>
+        <div>
+          <div id ="listings-filer-price">
+            <div class="dropdown float-right">
+              <select class="selectpicker" onchange="Listing.prototype.sort_listings_by_id(this.value)" default="Filter">
+                <option  disabled selected>Filter by Price</option>
+                <option value="price">Lowest to Highest</option>
+              </select>
+            </div>
+          </div>
+          <div id ="listings-filer-location">
+            <div class="dropdown float-right">
+              <select class="selectpicker" onchange="Listing.prototype.sort_listings_by_id(this.value)" default="Filter">
+                <option  disabled selected>Filter by Description</option>
+                <option value="housing_type">Housing Type</option>
+                <option value="address">Address</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br>
         <div id="listings-content">
         </div>
       </div>
