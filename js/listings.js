@@ -27,11 +27,11 @@ class Listing {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>${this.notes}</td>
-                        <td>
+                        <td class = "desc">${this.notes}</td>
+                        <td class = "info">
                           <p class = "card-text ">${this.address}, ${this.zip}</h6>
                           <br />
-                          <a href="">${this.phone}</a><br />
+                          ${this.phone}<br />
                           <a href="mailto:${this.email}">${this.email}</a>
                         </td>
                       </tr>

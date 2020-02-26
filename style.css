@@ -57,6 +57,13 @@ nav {
 
 }
 
+.desc {
+  width: 40%
+}
+.info {
+  width: 60%
+}
+
 .price {
   font-weight: bolder;
   color: green
