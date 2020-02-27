@@ -20,8 +20,14 @@ function add_form_events() {
         if (listing_form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
-
-            add_listing_to_local_storage();
+            // console.log($('#listing-form').serializeArray())
+            // (new Listing(
+            //     title = "Itay's House",
+            //     email = "stuff@northwestern.edu",
+            //     address = "2110 Maple Ave. Evanston, Il",
+            //     zip = "60201", phone = "123-456-7890",
+            //     housing_type = "House", notes = "Sig Chi darty house", price=700)).add_listing_to_local_storage();
+            listing_form.reset();
         }
         return false;
     })
