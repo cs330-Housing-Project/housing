@@ -158,9 +158,7 @@ Listing.prototype.sort_listings_by_location = (option) => {
         for (i = 0; i < values.length; i++) {
             listings[i].latlng = values[i];
         }
-        console.log(listings);
         listings = listings.sort((a, b) => (getDistance(a.latlng, dict[option]) > getDistance(b.latlng, dict[option])) ? 1: -1);
-        console.log(listings);
         const listings_content = document.getElementById('listings-content');
         listings_content.innerHTML = "";
         if (listings_content) {
