@@ -14,7 +14,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoHeCrzBKJHWVH-ClWbxOfJaySF5JMFwA"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoHeCrzBKJHWVH-ClWbxOfJaySF5JMFwA&libaries=geometry"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -59,18 +59,30 @@
         <div>
           <div id ="listings-filer-price">
             <div class="dropdown float-right">
-              <select class="selectpicker" onchange="Listing.prototype.sort_listings_by_id(this.value)" default="Filter">
+              <select class="selectpicker" onchange="Listing.prototype.sort_listings_price(this.value)" default="Filter">
                 <option  disabled selected>Filter by Price</option>
-                <option value="price">Lowest to Highest</option>
+                <option value="low">Low to High</option>
+                <option value="high">High to Low</option>
+              </select>
+            </div>
+          </div>
+          <div id ="listings-filer-type">
+            <div class="dropdown float-right">
+              <select class="selectpicker" onchange="Listing.prototype.sort_listings_by_type(this.value)" default="Filter">
+                <option  disabled selected>Filter by Housing Type</option>
+                <option value="House">Houses</option>
+                <option value="Apartment">Apartments</option>
+                <option value="Sublet">Sublets</option>
               </select>
             </div>
           </div>
           <div id ="listings-filer-location">
             <div class="dropdown float-right">
-              <select class="selectpicker" onchange="Listing.prototype.sort_listings_by_id(this.value)" default="Filter">
-                <option  disabled selected>Filter by Description</option>
-                <option value="housing_type">Housing Type</option>
-                <option value="address">Address</option>
+              <select class="selectpicker" onchange="Listing.prototype.sort_listings_by_location(this.value)" default="Filter">
+                <option  disabled selected>Sory by Campus Location</option>
+                <option value="north">North Campus</option>
+                <option value="mid">Mid Campus</option>
+                <option value="south">South Campus</option>
               </select>
             </div>
           </div>

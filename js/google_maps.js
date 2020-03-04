@@ -45,7 +45,7 @@ function initializeMap() {
         address = "2039 Sherman Ave. Evanston, Il",
         zip = "60201", phone = "333-333-3333",
         housing_type = "House", notes = "4 person house", price = 800)).add_listing_to_local_storage();
-    
+
     (new Listing(
         title = "A nice sublet",
         email = "stuff@northwestern.edu",
@@ -66,4 +66,17 @@ function markAddress(geocoder, map, address) {
         }
         console.log("added marker")
     });
+}
+
+function getLatLng(geocoder, address) {
+    return new Promise((resolve, reject) => {
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status === 'OK') {
+                resolve([results[0].geometry.location.lat(), results[0].geometry.location.lng()]);
+            } else {
+                resolve([-1, -1])
+            }
+        });
+    })
+
 }
