@@ -16,7 +16,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoHeCrzBKJHWVH-ClWbxOfJaySF5JMFwA"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+  <!--<script type='text/javascript' src='http://0.0.0.0:8080/scaledrone.js'></script>-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="../css/messages.css" />
 </head>
 
 <body>
@@ -33,12 +39,15 @@
             <li class="nav-item">
               <a class="nav-link" href="/housing">Home</span></a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" href="/housing/pages/about.html">About</a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" href="/housing/pages/add_listing.html">+ Add Listing</a>
             </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 My Account
@@ -49,15 +58,38 @@
                 <a class="dropdown-item active" href="/housing/pages/messages.html">Messages</a>
               </div>
             </li>
+
           </ul>
         </div>
       </nav>
     </div>
-    <div class="row" id="content">
+    <div class="row">
+      <div class="col-md">
+        <h3 class="text-center">My messages</h3>
+        <ul class="list-group list-group-hover">
+          <li class="list-group-item">Landlord A</li>
+          <li class="list-group-item">Landlord B</li>
+          <li class="list-group-item">Ethan Zack</li>
+          <li class="list-group-item">Alex Rhee</li>
+          <li class="list-group-item">Landlord C</li>
+          <li class="list-group-item">Landlord D</li>
+          <li class="list-group-item">Itay Golan</li>
+          <li class="list-group-item">Landlord E</li>
+        </ul>
+      </div>
+      <div class="col-md">
+        <h3 class="text-center">Find a roommate</h3>
+        <div class="members-count">-</div>
+        <div class="members-list">-</div>
+        <div class="messages"></div>
+        <form class="message-form" onsubmit="return false;">
+          <input class="message-form__input" placeholder="Type a message.." type="text" />
+          <input class="btn btn-outline-primary" value="Send" type="submit" />
+        </form>
+        <script src="../js/message.js"></script>
+      </div>
     </div>
   </div>
-  </div>
-</body>
 </body>
 
 </html>
