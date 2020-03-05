@@ -1,5 +1,5 @@
 class Listing {
-    constructor(title="", email="", address="", zip="", phone="", housing_type="", notes = "", price= 0) {
+    constructor(title, email, address, zip, phone, housing_type, notes = "", price= 0, latlng=[]) {
         this.title = title;
         this.email = email;
         this.address = address;
@@ -8,6 +8,7 @@ class Listing {
         this.housing_type = housing_type;
         this.notes = notes;
         this.price = price
+        this.latlng = latlng;
     }
     // TODO: add phone to card
     /**
@@ -75,17 +76,27 @@ class Listing {
     }
 }
 
+Listing.prototype.sort_listings_by_id= (param) => {
+    let listings = JSON.parse(localStorage.getItem('listings'));
+    listings = listings.map(JSON.parse)
+    listings = listings.sort((a, b) => (a[`${param}`] > b[`${param}`]) ? 1 : -1);
+}
 Listing.prototype.generate_from_obj = (obj) => {
     let newListing = new Listing();
     return Object.assign(newListing, obj);
 }
 
-Listing.prototype.sort_listings_by_id= (param) => {
+Listing.prototype.sort_listings_price= (option) => {
     let listings = JSON.parse(localStorage.getItem('listings'));
     listings = listings.map((l) => {
         return Listing.prototype.generate_from_obj(JSON.parse(l));
     })
-    listings = listings.sort((a, b) => (a[`${param}`] > b[`${param}`]) ? 1 : -1);
+
+    if(option === "low") {
+        listings = listings.sort((a, b) => (a['price'] > b['price']) ? 1 : -1);
+    } else {
+        listings = listings.sort((a, b) => (a['price'] < b['price']) ? 1 : -1);
+    }
 
     const listings_content = document.getElementById('listings-content');
     listings_content.innerHTML = "";
@@ -96,3 +107,66 @@ Listing.prototype.sort_listings_by_id= (param) => {
         });
     }
 }
+Listing.prototype.sort_listings_by_type= (option) => {
+    let listings = JSON.parse(localStorage.getItem('listings'));
+    listings = listings.map((l) => {
+        return Listing.prototype.generate_from_obj(JSON.parse(l));
+    })
+    listings = listings.filter((listing) => listing['housing_type'] === option);
+    const listings_content = document.getElementById('listings-content');
+    listings_content.innerHTML = "";
+    if (listings_content) {
+        listings.forEach((listing)=> {
+            listingCard = listing.generate_card();
+            listings_content.innerHTML += listingCard;
+        });
+    }
+}
+
+const rad = (x) => {
+    return x * Math.PI / 180;
+  };
+
+const getDistance = (p1, p2) => {
+    if (p1[0] == -1) return Math.max();
+    const R = 6378137; // Earth’s mean radius in meter
+    const dLat = rad(p2.lat - p1[0]);
+    const dLong = rad(p2.lng - p1[1]);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(rad(p1[0])) * Math.cos(rad(p2.lat)) *
+      Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c;
+    return d; // returns the distance in meter
+};
+
+Listing.prototype.sort_listings_by_location = (option) => {
+    const dict = {
+        "north": { lat: 42.058440, lng: -87.679972 },
+        "south": { lat: 42.052047, lng: -87.680986},
+        "mid": { lat: 42.055642, lng: -87.681159},
+    };
+    let listings = JSON.parse(localStorage.getItem('listings'));
+    listings = listings.map((l) => {
+        return Listing.prototype.generate_from_obj(JSON.parse(l));
+    })
+    let latlngs = [];
+    listings.forEach((listing) => {
+        latlngs.push(getLatLng(geocoder, listing['address']));
+    })
+    Promise.all(latlngs).then(values => {
+        for (i = 0; i < values.length; i++) {
+            listings[i].latlng = values[i];
+        }
+        listings = listings.sort((a, b) => (getDistance(a.latlng, dict[option]) > getDistance(b.latlng, dict[option])) ? 1: -1);
+        const listings_content = document.getElementById('listings-content');
+        listings_content.innerHTML = "";
+        if (listings_content) {
+            listings.forEach((listing)=> {
+                listingCard = listing.generate_card();
+                listings_content.innerHTML += listingCard;
+            });
+        }
+    });
+
+};

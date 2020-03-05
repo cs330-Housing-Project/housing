@@ -82,7 +82,16 @@ nav {
   font-weight: bolder;
   color: green
 }
+
+.list-group-hover .list-group-item:hover {
+    background-color: #007bff;
+    cursor: pointer;
+}
 /* .table-borderless  thead > tr > th, .table-borderless  tbody > tr > th, .table-borderless  thead > tr > td, { border: 1px solid #2980B9; }
 /* .table-borderless thead > tr > th {
     border-bottom: 1;
 } */
+
+.profile-pic .far fa-user{
+    border: solid 1px black;
+}
