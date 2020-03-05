@@ -86,3 +86,7 @@ nav {
 /* .table-borderless thead > tr > th {
     border-bottom: 1;
 } */
+
+.profile-pic .far fa-user{
+    border: solid 1px black;
+}
