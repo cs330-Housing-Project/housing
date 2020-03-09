@@ -129,22 +129,24 @@ const rad = (x) => {
 
 const getDistance = (p1, p2) => {
     if (p1[0] == -1) return Math.max();
-    const R = 6378137; // Earth’s mean radius in meter
-    const dLat = rad(p2.lat - p1[0]);
-    const dLong = rad(p2.lng - p1[1]);
-    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(rad(p1[0])) * Math.cos(rad(p2.lat)) *
-      Math.sin(dLong / 2) * Math.sin(dLong / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const d = R * c;
-    return d; // returns the distance in meter
+    // const R = 6378137; // Earth’s mean radius in meter
+    // const dLat = rad(p2.lat - p1[0]);
+    // const dLong = rad(p2.lng - p1[1]);
+    // const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    //   Math.cos(rad(p1[0])) * Math.cos(rad(p2.lat)) *
+    //   Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    // const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    // const d = R * c;
+    console.log(p1);
+    console.log(Math.abs(p1[0] - p2.lat)*1000);
+    return Math.abs(p1[0] - p2.lat)*1000; // returns the distance in meter
 };
 
 Listing.prototype.sort_listings_by_location = (option) => {
     const dict = {
-        "north": { lat: 42.058440, lng: -87.679972 },
-        "south": { lat: 42.052047, lng: -87.680986},
-        "mid": { lat: 42.055642, lng: -87.681159},
+        "north": { lat: 42.058, lng: -87.6800 },
+        "mid": { lat: 42.055, lng: -87.6800},
+        "south": { lat: 42.053, lng: -87.6800},
     };
     let listings = JSON.parse(localStorage.getItem('listings'));
     listings = listings.map((l) => {
@@ -154,13 +156,13 @@ Listing.prototype.sort_listings_by_location = (option) => {
     listings.forEach((listing) => {
         latlngs.push(getLatLng(geocoder, listing['address']));
     })
+    const listings_content = document.getElementById('listings-content');
+    listings_content.innerHTML = "";
     Promise.all(latlngs).then(values => {
         for (i = 0; i < values.length; i++) {
             listings[i].latlng = values[i];
         }
-        listings = listings.sort((a, b) => (getDistance(a.latlng, dict[option]) > getDistance(b.latlng, dict[option])) ? 1: -1);
-        const listings_content = document.getElementById('listings-content');
-        listings_content.innerHTML = "";
+        listings = listings.filter(listing => (getDistance(listing.latlng, dict[option]) <= 1));
         if (listings_content) {
             listings.forEach((listing)=> {
                 listingCard = listing.generate_card();
