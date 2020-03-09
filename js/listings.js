@@ -1,5 +1,5 @@
 class Listing {
-    constructor(title, email, address, zip, phone, housing_type, notes = "", price= 0, latlng=[]) {
+    constructor(title, email, address, zip, phone, housing_type, notes = "", price= 0, amenities="", latlng=[]) {
         this.title = title;
         this.email = email;
         this.address = address;
@@ -9,26 +9,22 @@ class Listing {
         this.notes = notes;
         this.price = price
         this.latlng = latlng;
+        this.amenities = amenities;
     }
     // TODO: add phone to card
     /**
      * Generates the card using the properties set on this.
      */
     generate_card() {
-        return `<div class="card listing-card">
+
+
+        return `<div class="card listing-card" type="button" data-toggle="modal" data-target="#exampleModal">
                 <div class="card-header">${this.housing_type}: ${this.title}<div class="float-right price">$${this.price}</div>
                 </div>
 
                   <table class="card-table table table-borderless" style="border: 0">
-                    <thead >
-                      <tr>
-                        <th scope="col">Description</th>
-                        <th scope="col">Info</th>
-                      </tr>
-                    </thead>
                     <tbody>
                       <tr>
-                        <td class = "desc">${this.notes}</td>
                         <td class = "info">
                           <p class = "card-text ">${this.address}, ${this.zip}</h6>
                           <br />
@@ -38,7 +34,75 @@ class Listing {
                       </tr>
                     </tbody>
                   </table>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">${this.housing_type}: ${this.title}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <table class="card-table table table-borderless" style="border: 0">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Description</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class = "desc">${this.notes}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <table class="card-table table table-borderless" style="border: 0">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Amenities</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class = "desc">${this.amenities}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <table class="card-table table table-borderless" style="border: 0">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Location</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class = "info">
+                                    <p class = "card-text ">${this.address}, ${this.zip}</h6>
+                                    <br />
+                                    ${this.phone}<br />
+                                    <a href="mailto:${this.email}">${this.email}</a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Add To Favorites</button>
+                            <button type="button" class="btn btn-primary">Message Landlord</button>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             </div>`
+            // change amenities to icons
     }
 
     /**
