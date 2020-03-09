@@ -16,6 +16,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoHeCrzBKJHWVH-ClWbxOfJaySF5JMFwA&libaries=geometry"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+  <script src="/js/Bootstrap/Select/bootstrap-select.js"></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -56,10 +57,10 @@
     <div class="row" id="content">
       <div class="col-md-6" id="listings">
         <h5 class="listHeader">Listings In Your Area</h5>
-        <div>
+        <div class = "flex-container space-around">
           <div id="listings-filer-price">
-            <div class="dropdown float-right">
-              <select class="selectpicker" onchange="Listing.prototype.sort_listings_price(this.value)" default="Filter">
+            <div class="dropdown flex-item">
+              <select class="custom-select" onchange="Listing.prototype.sort_listings_price(this.value)" default="Filter">
                 <option disabled selected>Filter by Price</option>
                 <option value="low">Low to High</option>
                 <option value="high">High to Low</option>
@@ -67,8 +68,8 @@
             </div>
           </div>
           <div id="listings-filer-type">
-            <div class="dropdown float-right">
-              <select class="selectpicker" onchange="Listing.prototype.sort_listings_by_type(this.value)" default="Filter">
+            <div class="dropdown flex-item">
+              <select class="custom-select" onchange="Listing.prototype.sort_listings_by_type(this.value)" default="Filter">
                 <option disabled selected>Filter by Housing Type</option>
                 <option value="House">Houses</option>
                 <option value="Apartment">Apartments</option>
@@ -77,8 +78,8 @@
             </div>
           </div>
           <div id="listings-filer-location">
-            <div class="dropdown float-right">
-              <select class="selectpicker" onchange="Listing.prototype.sort_listings_by_location(this.value)" default="Filter">
+            <div class="dropdown flex-item">
+              <select class="custom-select" onchange="Listing.prototype.sort_listings_by_location(this.value)" default="Filter">
                 <option disabled selected>Sort by Campus Location</option>
                 <option value="north">North Campus</option>
                 <option value="mid">Mid Campus</option>
