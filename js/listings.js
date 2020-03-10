@@ -94,8 +94,7 @@ class Listing {
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Add To Favorites</button>
-                            <button type="button" class="btn btn-primary">Message Landlord</button>
-
+                            <button type="button" class="btn btn-primary" onclick="window.location.href = '/housing/pages/messages.html';">Message Landlord</button>
                           </div>
                         </div>
                       </div>
