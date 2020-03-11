@@ -10,6 +10,7 @@ function initializeMap() {
         center: myLatLng
     };
     map = new google.maps.Map($("#mapcanvas")[0], mapOptions);
+    Listing.prototype.map = map;
 
     geocoder = new google.maps.Geocoder();
 
@@ -68,12 +69,34 @@ function markAddress(geocoder, map, address) {
                 map: map,
                 position: results[0].geometry.location
             });
+            markers.push(marker);
         } else {
             console.log('Geocode was not successful for the following reason: ' + status);
         }
         console.log("added marker")
     });
 }
+
+function setMapOnAll(map) {
+    for (let i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+
+  // Removes the markers from the map, but keeps them in the array.
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+
+  // Shows any markers currently in the array.
+  function showMarkers() {
+    setMapOnAll(map);
+  }
+
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+  }
 
 function getLatLng(geocoder, address) {
     return new Promise((resolve, reject) => {

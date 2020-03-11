@@ -1,3 +1,4 @@
+let markers = [];
 class Listing {
     constructor(title, email, address, zip, phone, housing_type, notes = "", price= 0, amenities="", latlng=[]) {
         this.title = title;
@@ -138,6 +139,8 @@ class Listing {
     }
 }
 
+Listing.prototype.map = null;
+
 Listing.prototype.sort_listings_by_id= (param) => {
     let listings = JSON.parse(localStorage.getItem('listings'));
     listings = listings.map(JSON.parse)
@@ -205,6 +208,7 @@ Listing.prototype.sort_listings_by_location = (option) => {
         return Listing.prototype.generate_from_obj(JSON.parse(l));
     })
     let latlngs = [];
+    deleteMarkers();
     listings.forEach((listing) => {
         latlngs.push(getLatLng(geocoder, listing['address']));
     })
@@ -215,6 +219,8 @@ Listing.prototype.sort_listings_by_location = (option) => {
             listings[i].latlng = values[i];
         }
         listings = listings.filter(listing => (getDistance(listing.latlng, dict[option]) <= 1));
+        listings.forEach(listing => markAddress(geocoder, map, listing.address));
+        showMarkers();
         if (listings_content) {
             listings.forEach((listing)=> {
                 listingCard = listing.generate_card();
@@ -224,3 +230,39 @@ Listing.prototype.sort_listings_by_location = (option) => {
     });
 
 };
+
+function markAddress(geocoder, map, address) {
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status === 'OK') {
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+            markers.push(marker);
+        } else {
+            console.log('Geocode was not successful for the following reason: ' + status);
+        }
+        console.log("added marker")
+    });
+}
+
+function setMapOnAll(map) {
+    for (let i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+
+  // Removes the markers from the map, but keeps them in the array.
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+
+  // Shows any markers currently in the array.
+  function showMarkers() {
+    setMapOnAll(map);
+  }
+
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+  }
