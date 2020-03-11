@@ -54,27 +54,23 @@
       </nav>
     </div>
     <div class="row" id="content">
+      <div class="col-md-3"></div>
       <div class="col-md-6" id="add-listing">
         <h5 class = "listHeader">Add a Listing</h5>
         <div id="add-listing-content">
         </div>
       </div>
-      <div class="col-md-6">
-        <div id="fixed" style="position:fixed; height: 90%; width: 50%; margin-left: -15px;">
-          <div id="mapcanvas">
-          </div>
-        </div>
+      <div class="col-md-3">
       </div>
     </div>
   </div>
   </div>
-  <script src="../js/listings.js" type="text/javascript"></script>
-  <script src="../js/google_maps.js" type="text/javascript"></script>
   <script>
     $(document).ready( function() {
         $("#add-listing-content").load("../templates/form.html");
     });
     </script>
+    <script src="../js/listings.js" type="text/javascript"></script>
     <script src="../js/forms.js" type="text/javascript">
     </script>
 </body>

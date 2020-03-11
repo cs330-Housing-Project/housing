@@ -1,26 +1,60 @@
-<form id="listing-form" class="needs-validation" novalidate>
-    <div class="form-group">
-        <label for="listing_title">Title</label>
-        <input type="text" class="form-control" id="listing_title" required>
-        <div class="valid-feedback">
+<form id="listing-form" class="needs-validation" novalidate onsubmit="a">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="listing_title">Title</label>
+            <input type="text" class="form-control" id="listing_title" required>
+            <div class="valid-feedback">
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid title.
+            </div>
         </div>
-        <div class="invalid-feedback">
-            Please provide a valid title.
+        <div class="form-group col-md-4">
+            <label for="price">Price</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">$</div>
+                </div>
+                <input type="number" class="form-control" id="price" required>
+            </div>
+            <div class="valid-feedback">
+            </div>
+            <div class="invalid-feedback">
+                Please provide a price.
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="email_address">Email address</label>
-        <input type="email" class="form-control" id="email_address" placeholder="name@example.com" required />
-        <div class="valid-feedback">
+        <div class="form-group col-md-4">
+            <label for="housing_type">Type of Housing</label>
+            <select class="form-control" id="housing_type">
+                <option>House</option>
+                <option>Apartment</option>
+                <option>Sublet</option>
+            </select>
         </div>
-        <div class="invalid-feedback">
-            Please provide an email address.
-        </div>
+
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-8">
-            <label for="address">Location</label>
+            <label for="email_address">Email address</label>
+            <input type="email" class="form-control" id="email_address" placeholder="name@example.com" required />
+            <div class="invalid-feedback">
+                Please provide an email address.
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" placeholder="123-456-7890" required />
+            <div class="invalid-feedback">
+                Please provide a phone number.
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            <label for="address">Address</label>
             <input type="address" class="form-control" id="address" placeholder="1922 Sheridan Rd." required />
             <div class="valid-feedback">
             </div>
@@ -39,14 +73,6 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="housing_type">Type of Housing</label>
-        <select class="form-control" id="housing_type">
-            <option>House</option>
-            <option>Apartment</option>
-            <option>Sublet</option>
-        </select>
-    </div>
-    <div class="form-group">
         <label for="notes">Notes</label>
         <textarea class="form-control" id="notes" rows="2" required></textarea>
         <div class="invalid-feedback">
@@ -54,4 +80,7 @@
         </div>
     </div>
     <button type="submit" onclick="window.location.href = '/housing';" class="btn btn-primary">Submit</button>
+
+    <!-- <img src="../svg/wrench.svg" class="icon" alt="icon name"> -->
+
 </form>

@@ -123,3 +123,7 @@ nav {
     width: 100%;
     font-weight: bold;
 }
+.icon {
+    width: 16px;
+    height: 16px;
+  }

@@ -191,16 +191,6 @@ const rad = (x) => {
 
 const getDistance = (p1, p2) => {
     if (p1[0] == -1) return Math.max();
-    // const R = 6378137; // Earth’s mean radius in meter
-    // const dLat = rad(p2.lat - p1[0]);
-    // const dLong = rad(p2.lng - p1[1]);
-    // const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    //   Math.cos(rad(p1[0])) * Math.cos(rad(p2.lat)) *
-    //   Math.sin(dLong / 2) * Math.sin(dLong / 2);
-    // const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    // const d = R * c;
-    console.log(p1);
-    console.log(Math.abs(p1[0] - p2.lat)*1000);
     return Math.abs(p1[0] - p2.lat)*1000; // returns the distance in meter
 };
 
