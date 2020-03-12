@@ -15,6 +15,15 @@ body {
     border-radius: 5px;
 }
 
+/* i img {
+    display: none;
+}
+
+li:hover {
+    display: block;
+} */
+
+
 .messages {
     flex-shrink: 1;
     overflow: auto;

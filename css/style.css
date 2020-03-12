@@ -72,7 +72,11 @@ nav {
 .desc {
   width: 40%
 }
-.info {
+
+.leftmsg {
+  width: 100%
+}
+.info .rightmsg {
   width: 60%
 }
 
@@ -87,14 +91,67 @@ nav {
   color: green
 }
 
-.list-group-hover .list-group-item:hover {
+.list-group input[type="radio"] {
+  display: none;
+}
+
+.list-group input[type="radio"] + .list-group-item {
+  cursor: pointer;
+}
+
+.list-group input[type="radio"] + .list-group-item:before {
+  content: "\2022";
+  color: transparent;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.list-group input[type="radio"]:checked + .list-group-item {
+  background-color: #0275D8;
+  color: #FFF;
+}
+
+.list-group input[type="radio"]:checked + .list-group-item:before {
+  color: inherit;
+}
+
+.sender {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #39d1d4
+
+}
+
+.receiver {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #f24bb5
+
+}
+
+/* .list-group-hover .list-group-item:hover {
     background-color: #007bff;
     cursor: pointer;
 }
-/* .table-borderless  thead > tr > th, .table-borderless  tbody > tr > th, .table-borderless  thead > tr > td, { border: 1px solid #2980B9; }
-/* .table-borderless thead > tr > th {
-    border-bottom: 1;
+
+.list-group-hover .list-group-item:visited {
+    background-color: #007bff;
+    cursor: pointer;
 } */
+/*
+.showme {
+  display: none;
+}
+
+.showhim:hover .showme {
+  display: block;
+} */
+
+ul a {
+  color: black;
+  text-decoration: none; /* no underline */
+}
+
 
 .profile-pic .far fa-user{
     border: solid 1px black;

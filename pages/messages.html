@@ -40,7 +40,7 @@
               <a class="nav-link" href="/housing">Home</span></a>
             </li>
 
-            
+
 
             <li class="nav-item">
               <a class="nav-link" href="/housing/pages/add_listing.html">+ Add Listing</a>
@@ -61,33 +61,53 @@
         </div>
       </nav>
     </div>
+
     <div class="row">
-      <div class="col-md">
-        <h3 class="text-center">My messages</h3>
-        <ul class="list-group list-group-hover">
-          <li class="list-group-item">Landlord A <img src="../svg/caret-right.svg" class="icon" alt="icon name"> </li>
-          <li class="list-group-item">Landlord B <img src="../svg/caret-right.svg" class="icon" alt="icon name"></li>
-          <li class="list-group-item">Ethan Zack <img src="../svg/caret-right.svg" class="icon" alt="icon name"></li>
-          <li class="list-group-item">Alex Rhee <img src="../svg/caret-right.svg" class="icon" alt="icon name"></li>
-          <li class="list-group-item">Landlord C <img src="../svg/caret-right.svg" class="icon" alt="icon name"></li>
-          <li class="list-group-item">Landlord D <img src="../svg/caret-right.svg" class="icon" alt="icon name"></li>
-          <li class="list-group-item">Itay Golan <img src="../svg/caret-right.svg" class="icon" alt="icon name"></li>
-          <li class="list-group-item">Landlord E <img src="../svg/caret-right.svg" class="icon" alt="icon name"></li>
-        </ul>
+      <div class="col-md-4">
+
+        <h3 class="text-center">Select User</h3>
+        <div class="list-group">
+
+          <input type="radio" onClick = "changeMsg(this)" name="RadioInputName" value="0" id="Radio1" />
+          <label class="list-group-item" for="Radio1">Landlord A <img src="../svg/caret-right.svg" class="showme icon float-right" alt="icon name"></label>
+
+          <input type="radio" onClick = "changeMsg(this)" name="RadioInputName" value="1" id="Radio2" />
+          <label class="list-group-item" for="Radio2">Landlord B <img src="../svg/caret-right.svg" class="showme icon float-right" alt="icon name"></label>
+
+          <input type="radio" onClick = "changeMsg(this)" name="RadioInputName" value="2" id="Radio3" />
+          <label class="list-group-item" for="Radio3">Ethan Zack <img src="../svg/caret-right.svg" class="showme icon float-right" alt="icon name"></label>
+
+          <input type="radio" onClick = "changeMsg(this)" name="RadioInputName" value="3" id="Radio4" />
+          <label class="list-group-item" for="Radio4">Alex Rhee <img src="../svg/caret-right.svg" class="showme icon float-right" alt="icon name"></label>
+
+          <input type="radio" onClick = "changeMsg(this)" name="RadioInputName" value="4" id="Radio5" />
+          <label class="list-group-item" for="Radio5">Landlord C <img src="../svg/caret-right.svg" class="showme icon float-right" alt="icon name"></label>
+
+          <input type="radio" onClick = "changeMsg(this)" name="RadioInputName" value="5" id="Radio6" />
+          <label class="list-group-item" for="Radio6">Landlord D <img src="../svg/caret-right.svg" class="showme icon float-right" alt="icon name"></label>
+
+          <input type="radio" onClick = "changeMsg(this)" name="RadioInputName" value="6" id="Radio7" />
+          <label class="list-group-item" for="Radio7">Itay Golan <img src="../svg/caret-right.svg" class="showme icon float-right" alt="icon name"></label>
+
+        </div>
       </div>
-      <div class="col-md">
-        <h3 class="text-center">Find a roommate</h3>
-        <div class="members-count">-</div>
-        <div class="members-list">-</div>
-        <div class="messages"></div>
-        <form class="message-form" onsubmit="return false;">
-          <input class="message-form__input" placeholder="Type a message.." type="text" />
-          <input class="btn btn-outline-primary" value="Send" type="submit" />
-        </form>
-        <script src="../js/message.js"></script>
-      </div>
+      <div class="col-md-8">
+        <h3 class="text-center">Messages</h3>
+        <div style = "width: 100%" id = "textMessages">
+
+          <div class="float-left sender">Hello</div><br><br>
+          <div class="float-right receiver">Hi</div><br><br>
+          <div class="float-left sender">Are you looking for a roommate?</div><br><br>
+          <div class="float-right receiver">Yes!</div><br><br>
+          <div class="float-left sender">For what address? How many people? What is the price?</div><br><br>
+          <div class="float-right receiver">5 people at 1234 Sheridan Road. It's $1000 </div><br><br>
+          <div class="float-left sender">I will let you know!</div><br>
+
+
+        </div>
     </div>
   </div>
+  <script src="../js/message.js"></script>
 </body>
 
 </html>
