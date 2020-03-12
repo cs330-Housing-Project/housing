@@ -157,10 +157,12 @@ Listing.prototype.sort_listings_price= (option) => {
         return Listing.prototype.generate_from_obj(JSON.parse(l));
     })
 
-    if(option === "low") {
-        listings = listings.sort((a, b) => (a['price'] > b['price']) ? 1 : -1);
-    } else {
-        listings = listings.sort((a, b) => (a['price'] < b['price']) ? 1 : -1);
+    if (option != "none") {
+        if(option === "low") {
+            listings = listings.sort((a, b) => (a['price'] > b['price']) ? 1 : -1);
+        } else {
+            listings = listings.sort((a, b) => (a['price'] < b['price']) ? 1 : -1);
+        }
     }
 
     const listings_content = document.getElementById('listings-content');
@@ -177,7 +179,12 @@ Listing.prototype.sort_listings_by_type= (option) => {
     listings = listings.map((l) => {
         return Listing.prototype.generate_from_obj(JSON.parse(l));
     })
-    listings = listings.filter((listing) => listing['housing_type'] === option);
+    deleteMarkers();
+    if (option != "none") {
+        listings = listings.filter((listing) => listing['housing_type'] === option);
+    }
+    listings.forEach(listing => markAddress(geocoder, map, listing.address));
+    showMarkers();
     const listings_content = document.getElementById('listings-content');
     listings_content.innerHTML = "";
     if (listings_content) {
@@ -207,27 +214,39 @@ Listing.prototype.sort_listings_by_location = (option) => {
     listings = listings.map((l) => {
         return Listing.prototype.generate_from_obj(JSON.parse(l));
     })
-    let latlngs = [];
-    deleteMarkers();
-    listings.forEach((listing) => {
-        latlngs.push(getLatLng(geocoder, listing['address']));
-    })
     const listings_content = document.getElementById('listings-content');
     listings_content.innerHTML = "";
-    Promise.all(latlngs).then(values => {
-        for (i = 0; i < values.length; i++) {
-            listings[i].latlng = values[i];
-        }
-        listings = listings.filter(listing => (getDistance(listing.latlng, dict[option]) <= 1));
-        listings.forEach(listing => markAddress(geocoder, map, listing.address));
-        showMarkers();
+    if (option != "none") {
+        deleteMarkers();
+        let latlngs = [];
+        listings.forEach((listing) => {
+            latlngs.push(getLatLng(geocoder, listing['address']));
+        })
+        Promise.all(latlngs).then(values => {
+            for (i = 0; i < values.length; i++) {
+                listings[i].latlng = values[i];
+            }
+            listings = listings.filter(listing => (getDistance(listing.latlng, dict[option]) <= 1.5));
+            listings.forEach(listing => markAddress(geocoder, map, listing.address));
+            showMarkers();
+            if (listings_content) {
+                listings.forEach((listing)=> {
+                    listingCard = listing.generate_card();
+                    listings_content.innerHTML += listingCard;
+                });
+            }
+        });
+    } else {
         if (listings_content) {
             listings.forEach((listing)=> {
                 listingCard = listing.generate_card();
                 listings_content.innerHTML += listingCard;
             });
         }
-    });
+        listings.forEach(listing => markAddress(geocoder, map, listing.address));
+        showMarkers();
+    }
+
 
 };
 
