@@ -17,7 +17,8 @@ class Listing {
      * Generates the card using the properties set on this.
      */
     generate_card() {
-        return `<div class="card listing-card" type="button" data-toggle="modal" data-target="#exampleModal">
+        let rand = Math.floor(Math.random() * 1000)
+        return `<div class="card listing-card" type="button" data-toggle="modal" data-target="#exampleModal${rand}">
                 <div class="card-header">${this.housing_type}: ${this.title}<div class="float-right price">$${this.price}</div>
                 </div>
 
@@ -35,7 +36,7 @@ class Listing {
                   </table>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal${rand}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -285,5 +286,5 @@ toggleAmenity = (element) => {
     select.options[id].selected = true;
     element.className = "btn btn-info";
   }
-  
+
 }
