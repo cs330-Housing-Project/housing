@@ -17,7 +17,7 @@ class Listing {
      * Generates the card using the properties set on this.
      */
     generate_card() {
-        let rand = Math.floor(Math.random() * 1000)
+        let rand = Math.floor(Math.random() * 1000000)
         return `<div class="card listing-card" type="button" data-toggle="modal" data-target="#exampleModal${rand}">
                 <div class="card-header">${this.housing_type}: ${this.title}<div class="float-right price">$${this.price}</div>
                 </div>
