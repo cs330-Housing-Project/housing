@@ -17,8 +17,6 @@ class Listing {
      * Generates the card using the properties set on this.
      */
     generate_card() {
-
-
         return `<div class="card listing-card" type="button" data-toggle="modal" data-target="#exampleModal">
                 <div class="card-header">${this.housing_type}: ${this.title}<div class="float-right price">$${this.price}</div>
                 </div>
@@ -115,14 +113,6 @@ class Listing {
      * Adds a listing to the local storage
      */
     add_listing_to_local_storage(referrerElement=null) {
-        const listings_content = document.getElementById('listings-content');
-        if (listings_content) {
-            listings_content.innerHTML += this.generate_card()
-        }
-
-        if (geocoder && map) {
-            markAddress(geocoder, map, address);
-        }
 
         let listings = new Set(JSON.parse(localStorage.getItem('listings')) || [])
         const json = this.convert_to_json();
@@ -134,8 +124,6 @@ class Listing {
                 // do stuff to display to user that they can't add the same listing twice
             }
         }
-
-
     }
 }
 
@@ -266,22 +254,36 @@ function markAddress(geocoder, map, address) {
 }
 
 function setMapOnAll(map) {
-    for (let i = 0; i < markers.length; i++) {
-      markers[i].setMap(map);
-    }
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
   }
+}
 
-  // Removes the markers from the map, but keeps them in the array.
-  function clearMarkers() {
-    setMapOnAll(null);
-  }
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
 
-  // Shows any markers currently in the array.
-  function showMarkers() {
-    setMapOnAll(map);
-  }
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
+}
 
-  function deleteMarkers() {
-    clearMarkers();
-    markers = [];
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+}
+
+
+toggleAmenity = (element) => {
+  const select = document.getElementById('amenities-select');
+  const id = Number(element.id.replace('amenity', ''));
+  if (select.options[id].selected) {
+    select.options[id].selected = false;
+    element.className = "btn btn-outline-info";
+  } else {
+    select.options[id].selected = true;
+    element.className = "btn btn-info";
   }
+  
+}

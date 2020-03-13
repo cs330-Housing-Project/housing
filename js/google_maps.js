@@ -27,7 +27,7 @@ function initializeMap() {
         housing_type = "House", notes = "Super dope place", price = 1300,
         amenities = "Free Wifi, Linens, Hot Water"
 
-      )).add_listing_to_local_storage();
+    )).add_listing_to_local_storage();
 
     (new Listing(
         title = "A cool house",
@@ -60,7 +60,30 @@ function initializeMap() {
         zip = "60201", phone = "111-111-1111",
         housing_type = "Sublet", notes = "8 person house", price = 1000,
         amenities = "Free Wifi, Linens, Hot Water")).add_listing_to_local_storage();
+
+    markAllAddresses();
+    createCards();
 }
+
+markAllAddresses = () => {
+    let listings = (JSON.parse(localStorage.getItem('listings')) || [])
+    for (let l of listings) {
+        if (typeof geocoder !== 'undefined' && typeof map !== 'undefined') {
+            markAddress(geocoder, map, JSON.parse(l).address);
+        }
+    }
+
+}
+
+createCards = () => {
+    const listings_content = document.getElementById('listings-content');
+    let listings = (JSON.parse(localStorage.getItem('listings')) || [])
+    for (let l of listings) {
+        obj = Listing.prototype.generate_from_obj(JSON.parse(l))
+        listings_content.innerHTML += obj.generate_card()
+    }
+}
+
 
 function markAddress(geocoder, map, address) {
     geocoder.geocode({ 'address': address }, function (results, status) {
@@ -73,30 +96,29 @@ function markAddress(geocoder, map, address) {
         } else {
             console.log('Geocode was not successful for the following reason: ' + status);
         }
-        console.log("added marker")
     });
 }
 
 function setMapOnAll(map) {
     for (let i = 0; i < markers.length; i++) {
-      markers[i].setMap(map);
+        markers[i].setMap(map);
     }
-  }
+}
 
-  // Removes the markers from the map, but keeps them in the array.
-  function clearMarkers() {
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
     setMapOnAll(null);
-  }
+}
 
-  // Shows any markers currently in the array.
-  function showMarkers() {
+// Shows any markers currently in the array.
+function showMarkers() {
     setMapOnAll(map);
-  }
+}
 
-  function deleteMarkers() {
+function deleteMarkers() {
     clearMarkers();
     markers = [];
-  }
+}
 
 function getLatLng(geocoder, address) {
     return new Promise((resolve, reject) => {

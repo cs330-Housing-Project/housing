@@ -1,4 +1,4 @@
-<form id="listing-form" class="needs-validation" novalidate onsubmit="a">
+<form id="listing-form" class="needs-validation" novalidate>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="listing_title">Title</label>
@@ -72,6 +72,7 @@
             </div>
         </div>
     </div>
+
     <div class="form-group">
         <label for="notes">Notes</label>
         <textarea class="form-control" id="notes" rows="2" required></textarea>
@@ -79,8 +80,40 @@
             Please provide some notes.
         </div>
     </div>
-    <button type="submit" onclick="window.location.href = '/housing';" class="btn btn-primary">Submit</button>
 
-    <!-- <img src="../svg/wrench.svg" class="icon" alt="icon name"> -->
+    <div class="form-group">
 
+        <label for="amenities">Amenities</label>
+
+        <select name="amenities" id="amenities-select" multiple="true" hidden>
+            <option disabled selected value></option>
+            <option value="Wifi"></option>
+            <option value="Kitchen"></option>
+            <option value="Electricity"></option>
+            <option value="Printing facilities"></option>
+            <option value="Gym"></option>
+            <option value="Utilities Included"></option>
+        </select>
+
+        <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Wifi" id="amenity1" onclick="toggleAmenity(this)">
+            <img src="../svg/wifi.svg" class="icon" alt="icon name">
+        </button>
+        <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Kitchen" id="amenity2" onclick="toggleAmenity(this)">
+            <img src="../svg/basket.svg" class="icon" alt="icon name">
+        </button>
+        <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Electricity" id="amenity3" onclick="toggleAmenity(this)">
+            <img src="../svg/bolt.svg" class="icon" alt="icon name">
+        </button>
+        <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Printing facilities" id="amenity4" onclick="toggleAmenity(this)">
+            <img src="../svg/print.svg" class="icon" alt="icon name">
+        </button>
+        <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Gym" id="amenity5" onclick="toggleAmenity(this)">
+            <img src="../svg/headphones.svg" class="icon" alt="icon name">
+        </button>
+        <button type="button" class="btn btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Utilities Included" id="amenity6" onclick="toggleAmenity(this)">
+            <img src="../svg/wrench.svg" class="icon" alt="icon name">
+        </button>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
