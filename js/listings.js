@@ -115,11 +115,15 @@ class Listing {
      */
     add_listing_to_local_storage(referrerElement=null) {
 
-        let listings = new Set(JSON.parse(localStorage.getItem('listings')) || [])
+        let listings = (JSON.parse(localStorage.getItem('listings')) || [])
+        let titles = new Set(listings.map((l) => {
+          return JSON.parse(l).title
+        }))
         const json = this.convert_to_json();
-        if (!listings.has(json)) {
-            listings.add(json);
-            localStorage.setItem('listings', JSON.stringify(Array.from(listings)))
+        console.log(titles)
+        if (!titles.has(this.title)) {
+            listings.push(json);
+            localStorage.setItem('listings', JSON.stringify(listings))
         } else {
             if (referrerElement) {
                 // do stuff to display to user that they can't add the same listing twice

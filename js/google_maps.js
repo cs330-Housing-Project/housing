@@ -19,6 +19,7 @@ function initializeMap() {
     //*********************************************************************
 
     // Add dummy data here: just copy paste this an put in your own info
+    localStorage.removeItem('listings');
     (new Listing(
         title = "A cool house",
         email = "mortyschapiro@northwestern.edu",
