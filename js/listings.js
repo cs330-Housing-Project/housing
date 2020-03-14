@@ -91,9 +91,9 @@ class Listing {
                             </table>
 
                           </div>
-                          <div class="modal-footer">
+                          <div class="modal-footer" id="modal_footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Add To Favorites</button>
+                            <button type="button" class="btn btn-primary" onclick="addListingSuccess()">Add To Favorites</button>
                             <button type="button" class="btn btn-primary" onclick="window.location.href = '/housing/pages/messages.html';">Message Landlord</button>
                           </div>
                         </div>
@@ -126,6 +126,10 @@ class Listing {
             }
         }
     }
+}
+
+addListingSuccess = () => {
+  alert("Succesfully added to favorites!");
 }
 
 Listing.prototype.map = null;
