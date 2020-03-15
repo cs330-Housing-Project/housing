@@ -21,6 +21,7 @@ We came up with three personas we envisioned using our app:
 
 * Sarah would love to live with her sorority sisters once they become upperclassmen. Because of this, she would appreciate the ability to search for housing in groups with her best friends. She would prefer to live on South campus because she frequently goes to and from her sorority house. She would like to live with a group of 8
 
+## Paper Prototyping
 
 ![Image of Paper Prototyping](./images/Paper_Prototype.png)
 [Full Testing Video](https://www.youtube.com/watch?v=Ln6ntWCNUwg)
